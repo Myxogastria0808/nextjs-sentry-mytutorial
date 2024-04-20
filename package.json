@@ -1,7 +1,9 @@
 {
   "name": "sentry-mytutorial",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "repository": "https://github.com/Myxogastria0808/express-cloudflare-r2.git",
+  "author": "'Myxogastria0808' <r.rstudio.c@gmail.com>",
+  "license": "WTFPL",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
