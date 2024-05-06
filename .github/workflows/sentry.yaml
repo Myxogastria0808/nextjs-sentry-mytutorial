@@ -5,7 +5,7 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
-job:
+jobs:
   sentry:
     runs-on: ubuntu-latest
     steps:
