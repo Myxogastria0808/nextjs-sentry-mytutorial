@@ -6,7 +6,15 @@
 
 - npm
 
+## セットアップコマンド
+
+```shell
+npx @sentry/wizard@latest -i nextjs
+```
+
 ## 作成するファイル
+
+※マニュアルセットアップの時に役に立つ
 
 > [!TIP]
 > Manual Setup をする場合は、これらのファイルを手動で作成する必要がある
@@ -206,4 +214,62 @@ export function GET() {
   throw new Error("Sentry Example API Route Error");
   return NextResponse.json({ data: "Testing Sentry Error..." });
 }
+```
+
+# User Feedback
+
+### `sentry.client.config.ts`
+
+※一部省略している。
+
+```typescript
+Sentry.init({
+  ...
+  integrations: [
+    ...
+    Sentry.feedbackIntegration({
+      colorScheme: "system",
+    }),
+  ],
+});
+```
+
+# GitHub Action
+
+### `.github/workflows/sentry.yaml`
+
+#### 環境変数についてのメモ
+
+`SENTRY_AUTH_TOKEN` 作成した Custom Integrations で自分で作成した TOKENS を使う
+
+`SENTRY_ORG` organization の名前をそのまま使う
+
+`SENTRY_PROJECT:` 各 Project の詳細ページの URL の`~project=`以下を使う
+
+詳細ページの URL: `https://<Organization 名>.sentry.io/projects/<Project 名>/?project=<SENTRY_PROJECT に入れる環境変数に当たる部分>`
+
+```yaml
+name: Sentry
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  sentry:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        with:
+          environment: production
 ```
