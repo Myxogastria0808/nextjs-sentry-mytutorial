@@ -229,7 +229,9 @@ Sentry.init({
     ...
     Sentry.feedbackIntegration({
       colorScheme: "system",
+      //名前は必ず必要かどうか
       isNameRequired: true,
+      //メールは必ず必要かどうか
       isEmailRequired: true,
     }),
   ],
