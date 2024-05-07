@@ -229,6 +229,8 @@ Sentry.init({
     ...
     Sentry.feedbackIntegration({
       colorScheme: "system",
+      isNameRequired: true,
+      isEmailRequired: true,
     }),
   ],
 });
