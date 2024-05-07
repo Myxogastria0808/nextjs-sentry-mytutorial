@@ -2,6 +2,10 @@
 
 ## Sentry
 
+Sentry の Docs を見れば、だいたいわかる
+
+https://docs.sentry.io/platforms/javascript/guides/nextjs/
+
 ## パッケージマネージャー
 
 - npm
@@ -221,6 +225,10 @@ export function GET() {
 ### `sentry.client.config.ts`
 
 ※一部省略している。
+
+#### User Feedback Widget の詳細
+
+https://docs.sentry.io/platforms/javascript/guides/nextjs/user-feedback/configuration/#user-feedback-widget
 
 ```typescript
 Sentry.init({
