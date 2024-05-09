@@ -236,23 +236,25 @@ Sentry.init({
   integrations: [
     ...
     Sentry.feedbackIntegration({
-      colorScheme: "light",
-      showName: false,
-      isNameRequired: false,
+      colorScheme: "dark",
+      showName: true,
+      isNameRequired: true,
       isEmailRequired: true,
       showBranding: true,
       buttonLabel: "不具合の報告はこちら",
       formTitle: "不具合の報告フォーム",
+      nameLabel: "名前",
+      namePlaceholder: "名前を書いてください。",
       emailLabel: "メールアドレス",
       emailPlaceholder: "メールアドレスを書いてください。",
       messageLabel: "不具合の内容",
       messagePlaceholder: "不具合の内容を書いてください。",
       submitButtonLabel: "不具合を報告",
       cancelButtonLabel: "キャンセル",
-      themeLight: {
-        submitBorder: "#6600cc",
-        submitBackground: "#6600cc",
-        submitBackgroundHover: "#761ad1",
+      themeDark: {
+        submitBorder: "#6181bc",
+        submitBackground: "#6181bc",
+        submitBackgroundHover: "#688bcc",
       },
     }),
   ],
